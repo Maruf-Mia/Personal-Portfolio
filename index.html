@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maruf Mia — Software Engineer</title>
+  <meta name="description" content="Software engineer with 8+ years of experience building reliable web products." />
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d1424" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maruf Mia — Software Engineer" />
+  <meta property="og:description" content="Software engineer with 8+ years of experience building reliable web products." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨🏻‍💻</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    try {
+      const saved = localStorage.getItem('theme');
+      const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+    } catch (e) {}
+  </script>
+
+  <!-- Tailwind via CDN; colors point at CSS variables defined in styles.css -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)', surface: 'var(--surface)', ink: 'var(--ink)', muted: 'var(--muted)',
+            line: 'var(--line)', accent: 'var(--accent)', 'accent-ink': 'var(--accent-ink)'
+          },
+          fontFamily: {
+            display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            sans: ['"Instrument Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-bg text-ink font-sans antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Sticky header -->
+  <header class="site-header sticky top-0 z-40 border-b border-line">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <a href="#home" class="flex min-w-0 items-center gap-2.5 font-display text-lg font-bold" aria-label="Maruf Mia, back to top">
+        <span class="logo-mark shrink-0" aria-hidden="true">MM</span>
+        <span class="truncate">Maruf Mia</span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-3 sm:gap-4 lg:gap-8">
+        <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
+          <a href="#about" data-nav class="header-link">About</a>
+          <a href="#experience" data-nav class="header-link">Experience</a>
+          <a href="#projects" data-nav class="header-link">Projects</a>
+          <a href="#skills" data-nav class="header-link">Skills</a>
+          <a href="#contact" data-nav class="header-link">Contact</a>
+        </nav>
+
+        <button id="theme-toggle" type="button" class="rounded border border-line px-3 py-1.5 text-sm text-muted hover:border-accent hover:text-accent" aria-label="Toggle dark mode">
+          <span data-theme-label>Dark</span>
+        </button>
+
+        <a href="assets/cv.pdf" download class="btn-primary btn-sm hidden lg:inline-block">Download CV</a>
+
+        <button id="menu-toggle" type="button" class="-mr-2.5 p-2.5 lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path data-icon="open" d="M4 7h16M4 12h16M4 17h16"/>
+            <path data-icon="close" class="hidden" d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line lg:hidden">
+      <nav class="mx-auto max-w-6xl px-6 py-4" aria-label="Mobile">
+        <a href="#about" data-nav class="header-link block py-3 text-lg">About</a>
+        <a href="#experience" data-nav class="header-link block py-3 text-lg">Experience</a>
+        <a href="#projects" data-nav class="header-link block py-3 text-lg">Projects</a>
+        <a href="#skills" data-nav class="header-link block py-3 text-lg">Skills</a>
+        <a href="#contact" data-nav class="header-link block py-3 text-lg">Contact</a>
+        <a href="assets/cv.pdf" download class="btn-primary mt-4 block text-center">Download CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- Hero -->
+    <section id="home" class="mx-auto max-w-6xl scroll-mt-16 px-6 pb-16 pt-12 md:pb-24 md:pt-20">
+      <div class="grid items-center gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:gap-10 lg:gap-16">
+
+        <div class="order-2 md:order-1">
+          <h1 class="font-display text-4xl font-bold leading-[1.05] tracking-tight min-[400px]:text-5xl sm:text-6xl lg:text-7xl">
+            8+ years of experience
+            <span class="text-muted">building web products that hold up in production.</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            I’m a software engineer who ships fast, readable code across the stack, and I work best on remote, async-first teams.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="btn-primary">View Work</a>
+            <a href="#contact" class="btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="order-1 justify-self-start md:order-2 md:justify-self-end">
+          <div class="avatar-frame h-40 w-40 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:h-80 lg:w-80">
+            <img src="assets/images/profile-placeholder.png" alt="Portrait of Maruf Mia" width="320" height="320"
+                 class="h-full w-full object-cover" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Key numbers -->
+    <section aria-label="Key numbers" class="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
+      <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
+        <div class="flex flex-col-reverse justify-end bg-surface p-6 md:p-8">
+          <dt class="mt-2 text-muted">Years Experience</dt>
+          <dd class="font-display text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"><span data-count="8" data-suffix="+">8+</span></dd>
+        </div>
+        <div class="flex flex-col-reverse justify-end bg-surface p-6 md:p-8">
+          <dt class="mt-2 text-muted">Projects Delivered</dt>
+          <dd class="font-display text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"><span data-count="50" data-suffix="+">50+</span></dd>
+        </div>
+        <div class="flex flex-col-reverse justify-end bg-surface p-6 md:p-8">
+          <dt class="mt-2 text-muted">Team Members Led</dt>
+          <dd class="font-display text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"><span data-count="10" data-suffix="+">10+</span></dd>
+        </div>
+        <div class="flex flex-col-reverse justify-end bg-surface p-6 md:p-8">
+          <dt class="mt-2 text-muted">Client Satisfaction</dt>
+          <dd class="font-display text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"><span data-count="99" data-suffix="%">99%</span></dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" data-section class="mx-auto max-w-6xl scroll-mt-20 px-6 pb-24">
+      <h2 class="section-title">About Me</h2>
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+
+        <!-- Left: journey -->
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed">
+          <p>Eight years ago I was a junior developer fixing bugs on a small team and learning how much of the job happens after the code is written: reading other people’s work, debugging production, and explaining trade-offs in plain language.</p>
+          <p>That curiosity turned into ownership. I moved from single features to whole services, then to designing systems and choosing what not to build. Along the way I learned that the fastest teams are the ones that write things down and review each other’s work kindly.</p>
+          <p>Today I lead engineers, mentor newer developers, and stay hands-on in the code. I’ve delivered 50+ projects, and I’m now looking for a fully remote team where I can keep growing and keep raising the bar.</p>
+        </div>
+
+        <!-- Right: values, philosophy, expertise -->
+        <div class="space-y-10 lg:border-l lg:border-line lg:pl-10">
+          <div>
+            <h3 class="font-display text-xl font-bold">Core values</h3>
+            <dl class="mt-4 space-y-4">
+              <div><dt class="font-semibold">Clarity over cleverness</dt><dd class="text-muted">Code and writing that the next person understands on the first read.</dd></div>
+              <div><dt class="font-semibold">Ownership</dt><dd class="text-muted">I follow work through to production and stay for the aftermath.</dd></div>
+              <div><dt class="font-semibold">Steady delivery</dt><dd class="text-muted">Small, frequent releases beat big, risky ones.</dd></div>
+            </dl>
+          </div>
+
+          <div>
+            <h3 class="font-display text-xl font-bold">Work philosophy</h3>
+            <p class="mt-4 border-l-2 border-accent pl-4 leading-relaxed">Start with the problem, not the tool. Ship the simplest thing that works, measure it, then improve what the data says matters.</p>
+          </div>
+
+          <div>
+            <h3 class="font-display text-xl font-bold">Key domains of expertise</h3>
+            <ul class="tag-list">
+              <li>Web applications</li><li>API design</li><li>Cloud infrastructure</li>
+              <li>Performance</li><li>Team leadership</li><li>Developer tooling</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" data-section class="mx-auto max-w-6xl scroll-mt-20 px-6 pb-24">
+      <div class="max-w-3xl">
+        <h2 class="section-title">Experience</h2>
+        <p class="mb-10 max-w-xl text-muted">Eight years, from junior developer to engineering lead.</p>
+        <ol class="ml-1 border-l border-line">
+          <li class="relative pb-12 pl-8 last:pb-0">
+            <span class="absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full border-2 border-accent bg-accent shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_22%,transparent)]" aria-hidden="true"></span>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 class="font-display text-xl font-bold">Lead Software Engineer</h3>
+              <p class="text-sm tabular-nums text-muted">2026 – Present</p>
+            </div>
+            <p class="font-medium text-accent">Cefalo Bangladesh ltd. </p>
+            <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted">
+              <li>Lead a team of 10 engineers across three product squads, cutting average delivery time by 35%.</li>
+              <li>Designed an event-driven architecture that now handles 2M+ requests per day with 99.95% uptime.</li>
+              <li>Introduced an RFC and code review process that reduced production incidents by 40%.</li>
+            </ul>
+            <ul class="tag-list"><li>TypeScript</li><li>Node.js</li><li>AWS</li><li>PostgreSQL</li><li>Kubernetes</li></ul>
+          </li>
+          <li class="relative pb-12 pl-8 last:pb-0">
+            <span class="absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full border-2 border-accent bg-bg" aria-hidden="true"></span>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 class="font-display text-xl font-bold">Senior Software Engineer</h3>
+              <p class="text-sm tabular-nums text-muted">2024 – 2025</p>
+            </div>
+            <p class="font-medium text-accent"> Vivasoft Limited </p>
+            <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted">
+              <li>Cut p95 API latency from 900 ms to 220 ms through query tuning and caching.</li>
+              <li>Split a legacy monolith into services with zero downtime during the migration.</li>
+              <li>Mentored four engineers, two of whom were promoted within a year.</li>
+            </ul>
+            <ul class="tag-list"><li>React</li><li>Node.js</li><li>Redis</li><li>Docker</li></ul>
+          </li>
+          <li class="relative pb-12 pl-8 last:pb-0">
+            <span class="absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full border-2 border-accent bg-bg" aria-hidden="true"></span>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 class="font-display text-xl font-bold">Software Engineer</h3>
+              <p class="text-sm tabular-nums text-muted">2023 – 2024</p>
+            </div>
+            <p class="font-medium text-accent"> Enosis Solutions </p>
+            <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted">
+              <li>Built the customer dashboard now used by 20,000+ people every month.</li>
+              <li>Raised automated test coverage from 30% to 80% and set up CI/CD from scratch.</li>
+            </ul>
+            <ul class="tag-list"><li>React</li><li>Python</li><li>PostgreSQL</li><li>GitHub Actions</li></ul>
+          </li>
+          <li class="relative pb-12 pl-8 last:pb-0">
+            <span class="absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full border-2 border-accent bg-bg" aria-hidden="true"></span>
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 class="font-display text-xl font-bold">Junior Developer</h3>
+              <p class="text-sm tabular-nums text-muted">2022 – 2023</p>
+            </div>
+            <p class="font-medium text-accent"> ZAAG SYSTEMS </p>
+            <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted">
+              <li>Shipped 30+ features and fixed 200+ bugs while learning the codebase end to end.</li>
+              <li>Automated an internal reporting task, saving the team about 10 hours a week.</li>
+            </ul>
+            <ul class="tag-list"><li>JavaScript</li><li>HTML/CSS</li><li>MySQL</li></ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+
+<section id="projects" data-section class="mx-auto max-w-6xl scroll-mt-20 px-6 pb-24">
+  <h2 class="section-title">Featured Projects</h2>
+
+  <!-- Project Filters -->
+
+  <div
+    role="group"
+    aria-label="Filter projects by category"
+    class="mb-8 flex flex-wrap gap-2"
+  >
+    <button type="button" data-filter="all" aria-pressed="true" class="filter-btn">
+      All
+    </button>
+
+    <button type="button" data-filter="web" aria-pressed="false" class="filter-btn">
+      Web Apps
+    </button>
+
+    <button type="button" data-filter="mobile" aria-pressed="false" class="filter-btn">
+      Mobile
+    </button>
+
+    <button
+      type="button"
+      data-filter="architecture"
+      aria-pressed="false"
+      class="filter-btn"
+    >
+      System Architecture
+    </button>
+  </div>
+
+  <!-- Project Grid -->
+  <div id="project-grid" class="grid gap-6 md:grid-cols-2">
+
+    <!-- Project 1 -->
+    <article
+      data-category="web"
+      class="project-card flex flex-col overflow-hidden rounded-xl border border-line bg-surface"
+    >
+      <img
+        src="assets/images/project-1.png"
+        alt="Inventory Pulse project"
+        width="640"
+        height="400"
+        loading="lazy"
+        class="aspect-[16/10] w-full border-b border-line object-cover"
+      />
+
+      <div class="flex flex-1 flex-col p-6">
+        <p class="text-sm text-muted">Web App</p>
+
+        <h3 class="mt-1 font-display text-2xl font-bold">
+          Inventory Pulse
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-muted">
+          Warehouse teams tracked stock in spreadsheets and kept overselling.
+          This dashboard shows live stock levels across every location and
+          provides real-time inventory visibility.
+        </p>
+
+        <ul class="tag-list">
+          <li>React</li>
+          <li>Node.js</li>
+          <li>WebSockets</li>
+          <li>PostgreSQL</li>
+        </ul>
+
+        <div class="mt-auto flex flex-wrap gap-3 pt-6">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost btn-sm"
+          >
+            View Code
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article
+      data-category="web"
+      class="project-card flex flex-col overflow-hidden rounded-xl border border-line bg-surface"
+    >
+      <img
+        src="assets/images/project-2.png"
+        alt="Booking Engine project"
+        width="640"
+        height="400"
+        loading="lazy"
+        class="aspect-[16/10] w-full border-b border-line object-cover"
+      />
+
+      <div class="flex flex-1 flex-col p-6">
+        <p class="text-sm text-muted">Web App</p>
+
+        <h3 class="mt-1 font-display text-2xl font-bold">
+          Booking Engine
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-muted">
+          A scheduling platform designed to manage appointments,
+          prevent booking conflicts, and improve the overall booking
+          experience.
+        </p>
+
+        <ul class="tag-list">
+          <li>Next.js</li>
+          <li>Stripe</li>
+          <li>Tailwind CSS</li>
+        </ul>
+
+        <div class="mt-auto flex flex-wrap gap-3 pt-6">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost btn-sm"
+          >
+            View Code
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article
+      data-category="mobile"
+      class="project-card flex flex-col overflow-hidden rounded-xl border border-line bg-surface"
+    >
+      <img
+        src="assets/images/project-3.png"
+        alt="FieldNotes mobile application"
+        width="640"
+        height="400"
+        loading="lazy"
+        class="aspect-[16/10] w-full border-b border-line object-cover"
+      />
+
+      <div class="flex flex-1 flex-col p-6">
+        <p class="text-sm text-muted">Mobile</p>
+
+        <h3 class="mt-1 font-display text-2xl font-bold">
+          FieldNotes
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-muted">
+          An offline-first mobile application that allows field technicians
+          to save reports locally and synchronize them when connectivity
+          becomes available.
+        </p>
+
+        <ul class="tag-list">
+          <li>React Native</li>
+          <li>TypeScript</li>
+          <li>SQLite</li>
+        </ul>
+
+        <div class="mt-auto flex flex-wrap gap-3 pt-6">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost btn-sm"
+          >
+            View Code
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article
+      data-category="architecture"
+      class="project-card flex flex-col overflow-hidden rounded-xl border border-line bg-surface"
+    >
+      <img
+        src="assets/images/project-4.png"
+        alt="Event Pipeline system architecture"
+        width="640"
+        height="400"
+        loading="lazy"
+        class="aspect-[16/10] w-full border-b border-line object-cover"
+      />
+
+      <div class="flex flex-1 flex-col p-6">
+        <p class="text-sm text-muted">System Architecture</p>
+
+        <h3 class="mt-1 font-display text-2xl font-bold">
+          Event Pipeline
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-muted">
+          An event-driven architecture designed to process high-volume
+          application events reliably using distributed messaging and
+          scalable infrastructure.
+        </p>
+
+        <ul class="tag-list">
+          <li>Kafka</li>
+          <li>AWS</li>
+          <li>Kubernetes</li>
+          <li>Node.js</li>
+        </ul>
+
+        <div class="mt-auto flex flex-wrap gap-3 pt-6">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-sm"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost btn-sm"
+          >
+            View Code
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Accessible project count -->
+  <p id="project-count" class="sr-only" role="status" aria-live="polite"></p>
+</section>
+
+<!-- Project Filter JavaScript -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll("[data-filter]");
+    const projectCards = document.querySelectorAll(".project-card");
+    const projectCount = document.getElementById("project-count");
+
+    function filterProjects(category) {
+      let visibleCount = 0;
+
+      projectCards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+
+        const shouldShow =
+          category === "all" || cardCategory === category;
+
+        if (shouldShow) {
+          card.classList.remove("hidden");
+          visibleCount++;
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      // Update button accessibility state
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.filter === category;
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      // Update screen-reader status
+      projectCount.textContent =
+        `${visibleCount} project${visibleCount === 1 ? "" : "s"} shown.`;
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterProjects(button.dataset.filter);
+      });
+    });
+
+    // Initial state
+    filterProjects("all");
+  });
+</script>
+
+
+    <!-- Skills -->
+    <section id="skills" data-section class="mx-auto max-w-6xl scroll-mt-20 px-6 pb-24">
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+      <div class="grid gap-10 lg:grid-cols-3">
+        <div class="border-t border-line pt-6">
+          <h3 class="font-display text-xl font-bold">Technical Skills</h3>
+          <ul class="mt-5 space-y-5">
+            <li>
+              <div class="flex items-baseline justify-between gap-4"><span class="font-medium">JavaScript / TypeScript</span><span class="text-sm text-muted">Expert</span></div>
+              <div class="mt-2 h-1.5 rounded-full bg-line" aria-hidden="true"><div class="h-full rounded-full bg-accent" style="width:95%"></div></div>
+            </li>
+            <li>
+              <div class="flex items-baseline justify-between gap-4"><span class="font-medium">Python</span><span class="text-sm text-muted">Advanced</span></div>
+              <div class="mt-2 h-1.5 rounded-full bg-line" aria-hidden="true"><div class="h-full rounded-full bg-accent" style="width:80%"></div></div>
+            </li>
+            <li>
+              <div class="flex items-baseline justify-between gap-4"><span class="font-medium">SQL and databases</span><span class="text-sm text-muted">Advanced</span></div>
+              <div class="mt-2 h-1.5 rounded-full bg-line" aria-hidden="true"><div class="h-full rounded-full bg-accent" style="width:85%"></div></div>
+            </li>
+            <li>
+              <div class="flex items-baseline justify-between gap-4"><span class="font-medium">System design</span><span class="text-sm text-muted">Advanced</span></div>
+              <div class="mt-2 h-1.5 rounded-full bg-line" aria-hidden="true"><div class="h-full rounded-full bg-accent" style="width:80%"></div></div>
+            </li>
+            <li>
+              <div class="flex items-baseline justify-between gap-4"><span class="font-medium">Cloud (AWS)</span><span class="text-sm text-muted">Proficient</span></div>
+              <div class="mt-2 h-1.5 rounded-full bg-line" aria-hidden="true"><div class="h-full rounded-full bg-accent" style="width:65%"></div></div>
+            </li>
+          </ul>
+        </div>
+        <div class="border-t border-line pt-6">
+          <h3 class="font-display text-xl font-bold">Frameworks &amp; Tools</h3>
+          <ul class="tag-list !mt-5"><li>React</li><li>Next.js</li><li>Node.js</li><li>Express</li><li>Tailwind CSS</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li><li>Terraform</li><li>Jest</li></ul>
+        </div>
+        <div class="border-t border-line pt-6">
+          <h3 class="font-display text-xl font-bold">Leadership &amp; Management</h3>
+          <ul class="tag-list !mt-5"><li>Team leadership</li><li>Mentoring</li><li>Technical roadmapping</li><li>Code review culture</li><li>Hiring and interviewing</li><li>Stakeholder communication</li><li>Agile delivery</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" data-section class="mx-auto max-w-6xl scroll-mt-20 px-6 pb-24">
+      <h2 class="section-title">Testimonials</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <figure class="flex flex-col rounded-xl border border-line bg-surface p-6 sm:p-8">
+          <blockquote class="text-lg leading-relaxed">“Maruf Mia took over our most fragile service and left it faster and easier to run. The team ships with more confidence because of how they lead and how clearly they explain trade-offs.”</blockquote>
+          <figcaption class="mt-auto flex items-center gap-4 border-t border-line pt-6">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-line text-sm font-semibold text-muted" aria-hidden="true">JD</span>
+            <div>
+              <p class="font-semibold">Ratul Ahmed</p>
+              <p class="text-sm text-muted">Engineering Director, Impel IT Solutions</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="flex flex-col rounded-xl border border-line bg-surface p-6 sm:p-8">
+          <blockquote class="text-lg leading-relaxed">“They asked the right questions before writing any code, delivered on schedule, and stayed responsive after launch. I would hire them again without hesitation.”</blockquote>
+          <figcaption class="mt-auto flex items-center gap-4 border-t border-line pt-6">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-line text-sm font-semibold text-muted" aria-hidden="true">JS</span>
+            <div>
+              <p class="font-semibold">John Smith</p>
+              <p class="text-sm text-muted">Product Lead, OOZOU </p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+<!-- Contact Section -->
+
+
+<section
+  id="contact"
+  data-section
+  class="mx-auto max-w-6xl scroll-mt-20 px-4 pb-20 sm:px-6 sm:pb-24"
+>
+  <h2 class="section-title">Contact</h2>
+
+  <p class="mb-10 max-w-xl leading-relaxed text-muted">
+    I’m open to fully remote opportunities. Feel free to send me a message
+    using the form below or contact me directly. I usually reply within
+    two working days.
+  </p>
+
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+
+    <!-- Contact Information -->
+    <div>
+      <h3 class="font-display text-xl font-bold">
+        Contact Details
+      </h3>
+
+      <dl class="mt-4 divide-y divide-line">
+
+        <div class="py-4">
+          <dt class="text-sm text-muted">Email</dt>
+          <dd class="mt-1 break-all">
+            <a
+              class="font-medium transition-colors hover:text-accent"
+              href="mailto:mohammadmarufmailbox@gmail.com"
+            >
+              mohammadmarufmailbox@gmail.com
+            </a>
+          </dd>
+        </div>
+
+        <div class="py-4">
+          <dt class="text-sm text-muted">LinkedIn</dt>
+          <dd class="mt-1">
+            <a
+              href="https://www.linkedin.com/in/maruf-mia4/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium transition-colors hover:text-accent"
+            >
+              LinkedIn Profile ↗
+            </a>
+          </dd>
+        </div>
+
+        <div class="py-4">
+          <dt class="text-sm text-muted">GitHub</dt>
+          <dd class="mt-1">
+            <a
+              href="https://github.com/Maruf-Mia"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium transition-colors hover:text-accent"
+            >
+              GitHub Profile ↗
+            </a>
+          </dd>
+        </div>
+
+        <div class="py-4">
+          <dt class="text-sm text-muted">Location</dt>
+          <dd class="mt-1 font-medium">
+            Dhaka, Bangladesh
+            <span class="font-normal text-muted">
+              (Available for remote work)
+            </span>
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-8">
+
+      <h3 class="font-display text-xl font-bold">
+        Send a Message
+      </h3>
+
+      <p class="mt-2 text-sm text-muted">
+        Have a project, opportunity, or question? Let’s connect.
+      </p>
+
+      <form
+        id="contact-form"
+        class="mt-6 space-y-5"
+        method="POST"
+        data-endpoint=""
+      >
+
+        <!-- Full Name -->
+        <div>
+          <label
+            for="cf-name"
+            class="mb-2 block text-sm font-medium"
+          >
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="cf-name"
+            name="name"
+            autocomplete="name"
+            placeholder="Enter your full name"
+            required
+            maxlength="100"
+            class="w-full rounded-lg border border-line bg-bg p-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label
+            for="cf-email"
+            class="mb-2 block text-sm font-medium"
+          >
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="cf-email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+            maxlength="254"
+            class="w-full rounded-lg border border-line bg-bg p-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+          />
+        </div>
+
+        <!-- Subject -->
+        <div>
+          <label
+            for="cf-subject"
+            class="mb-2 block text-sm font-medium"
+          >
+            Subject
+          </label>
+
+          <input
+            type="text"
+            id="cf-subject"
+            name="subject"
+            placeholder="What would you like to discuss?"
+            required
+            maxlength="150"
+            class="w-full rounded-lg border border-line bg-bg p-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+          />
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label
+            for="cf-message"
+            class="mb-2 block text-sm font-medium"
+          >
+            Message
+          </label>
+
+          <textarea
+            id="cf-message"
+            name="message"
+            rows="5"
+            maxlength="5000"
+            placeholder="Write your message here..."
+            required
+            class="w-full resize-y rounded-lg border border-line bg-bg p-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+          ></textarea>
+        </div>
+
+        <!-- Honeypot Spam Protection -->
+        <div class="hidden" aria-hidden="true">
+          <label for="cf-website">Leave this field empty</label>
+          <input
+            id="cf-website"
+            name="_gotcha"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          id="form-submit"
+          type="submit"
+          class="btn-primary w-full justify-center rounded-lg py-3 transition-opacity disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        >
+          Send Message →
+        </button>
+
+        <!-- Form Status -->
+        <p
+          id="form-status"
+          class="min-h-5 text-sm text-muted"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact Form JavaScript -->
+<script>
+(() => {
+  const form = document.getElementById('contact-form');
+
+  if (!form) return;
+
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('form-submit');
+
+  const ownerEmail = 'mohammadmarufmailbox@gmail.com';
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const honeypot = form.querySelector('[name="_gotcha"]');
+
+    // Basic spam protection
+    if (honeypot?.value.trim()) return;
+
+    const data = new FormData(form);
+    const endpoint = (form.dataset.endpoint || '').trim();
+
+    // Fallback: Open user's default email application
+    if (!endpoint) {
+      const name = String(data.get('name') || '');
+      const email = String(data.get('email') || '');
+      const subject = encodeURIComponent(
+        String(data.get('subject') || 'Portfolio Contact')
+      );
+
+      const message = String(data.get('message') || '');
+
+      const body = encodeURIComponent(
+        `${message}\n\nFrom: ${name} <${email}>`
+      );
+
+      statusEl.textContent =
+        'Opening your email application... Please send the message there.';
+
+      window.location.href =
+        `mailto:${ownerEmail}?subject=${subject}&body=${body}`;
+
+      return;
+    }
+
+    // Submit through configured backend
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    statusEl.textContent = '';
+    statusEl.className = 'min-h-5 text-sm text-muted';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      statusEl.textContent =
+        'Thank you! Your message has been sent successfully.';
+
+      statusEl.className =
+        'min-h-5 text-sm text-green-600';
+
+      form.reset();
+
+    } catch (error) {
+      statusEl.textContent =
+        'Unable to send your message. Please try again or email me directly.';
+
+      statusEl.className =
+        'min-h-5 text-sm text-red-600';
+
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message →';
+    }
+  });
+})();
+</script>
+
+
+  <footer class="border-t border-line">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between">
+      <p>© <span id="year"></span> Maruf. All rights reserved.</p>
+      
+      <nav aria-label="Footer">
+        <ul class="flex flex-wrap gap-x-6 gap-y-2">
+          <li><a href="#about" class="inline-block py-1 hover:text-ink">About</a></li>
+          <li><a href="#experience" class="inline-block py-1 hover:text-ink">Experience</a></li>
+          <li><a href="#projects" class="inline-block py-1 hover:text-ink">Projects</a></li>
+          <li><a href="#skills" class="inline-block py-1 hover:text-ink">Skills</a></li>
+          <li><a href="#contact" class="inline-block py-1 hover:text-ink">Contact</a></li>
+          <li><a href="#home" class="inline-block py-1 hover:text-ink">Back to top</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+
+  <script src="app.js"></script>
+  <script>
+    const yearNode = document.getElementById('year');
+    if (yearNode) yearNode.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
